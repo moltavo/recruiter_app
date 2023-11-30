@@ -1,0 +1,23 @@
+body {
+  background-color: #fff;
+}
+
+h1 {
+  font-size: 2em;
+  margin-top: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+
+table th {
+  text-align: left;
+}

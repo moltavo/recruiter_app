@@ -1,0 +1,18 @@
+erDiagram
+  Timeline {
+    id INT PK
+    recruiter_name VARCHAR(255)
+    recruiter_surname VARCHAR(255)
+    candidate_name VARCHAR(255)
+    candidate_surname VARCHAR(255)
+  }
+
+  Step {
+    id INT PK
+    category VARCHAR(255)
+    status_category VARCHAR(255)
+    status_history JSONB
+    timeline_id INT FK
+  }
+
+  Timeline 1..n *-- 0..n Step

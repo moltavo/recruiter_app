@@ -1,0 +1,40 @@
+services:
+  mariadb:
+    image: docker.io/bitnami/mariadb:10.6
+    environment:
+      # ALLOW_EMPTY_PASSWORD is recommended only for development.
+      - ALLOW_EMPTY_PASSWORD=yes
+      - MARIADB_USER=recruiter_laravel
+      - MARIADB_DATABASE=recruiter_laravel
+      - MARIADB_PASSWORD=recruiter_laravel
+    volumes:
+      - mysql-volume:/var/lib/mysql
+
+  recruiter_app:
+    build: .
+    command: /docker-entrypoint.sh
+    volumes:
+      - ./app:/app
+    ports:
+      - '80:8000'
+    environment:
+      - DB_HOST=mariadb
+      - DB_PORT=3306
+      - DB_USERNAME=recruiter_laravel
+      - DB_DATABASE=recruiter_laravel
+      - DB_PASSWORD=recruiter_laravel
+    depends_on:
+      - mariadb
+  phpmyadmin:
+    image: phpmyadmin:5.1.1
+    ports:
+        - 8081:80
+    environment:
+        - PMA_ARBITRARY=1
+        - PMA_HOST=mariadb
+        - UPLOAD_LIMIT=1G
+    depends_on:
+        - mariadb
+
+volumes:
+    mysql-volume:        
