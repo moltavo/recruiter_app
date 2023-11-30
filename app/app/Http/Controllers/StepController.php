@@ -13,12 +13,44 @@ class StepController extends Controller
         {
             // Ελέγξτε αν το timeline υπάρχει
             $timeline = Timeline::findOrFail($request->input('timeline_id'));
-
+            $a = 0;
+            $b = 0;
+            $c = 0;
+            $d = 0;
             // Δημιουργία νέου Step
             $step = new Step();
             $step->timeline_id = $timeline->id;
             $step->category = $request->input('category');
             $step->status_category = $request->input('status_category');
+            if($request->input('category') == '1st Interview')
+                {
+                    $step->category_1 = 1;
+                    $step->status_category_1 = 1;
+                    $step->category_2 = 0;
+                    $step->status_category_2 = 0;
+                    $step->category_3 = 0;
+                    $step->status_category_3 = 0;
+                }elseif($request->input('category') == 'Tech Assessment'){
+                    $step->category_1 = 0;
+                    $step->status_category_1 = 0;
+                    $step->category_2 = 1;
+                    $step->status_category_2 = 1;
+                    $step->category_3 = 0;
+                    $step->status_category_3 = 0;
+                }elseif($request->input('category') == 'Offer'){
+                    $step->category_1 = 0;
+                    $step->status_category_1 = 0;
+                    $step->category_2 = 0;
+                    $step->status_category_2 = 0;
+                    $step->category_3 = 1;
+                    $step->status_category_3 = 1;
+                }
+            // $step->category_1 = $a;
+            // $step->category_2 = $b;
+            // $step->category_3 = $c;
+            // $step->status_category_1 = $a;
+            // $step->status_category_2 = $b;
+            // $step->status_category_3 = $c;       
             $step->save();
 
             return view('welcome');
@@ -27,13 +59,72 @@ class StepController extends Controller
         public function update(Request $request)
         {
             $step = Step::findOrFail($request->input('id'));
+        
+            // Έλεγχος αν το category είναι 1 σε ένα από τα πεδία category_1, category_2, category_3
 
+            if ($request->input('category') == '1st Interview') {
+                $step->category_1 = 1;
+            } elseif ($request->input('category') == 'Tech Assessment') {
+                $step->category_2 = 1;
+            } elseif ($request->input('category') == 'Offer') {
+                $step->category_3 = 1;
+            }
+
+
+            if ($request->input('status_category') == 'Pending') {
+                $step->status_category_1 = 1;
+            } elseif ($request->input('status_category') == 'Complete') {
+                $step->status_category_2 = 1;
+            } elseif ($request->input('status_category') == 'Reject') {
+                $step->status_category_3 = 1;
+            }
+
+            if ($request->input('status_category') == 'Pending' && (
+                $step->category_1 == '1'
+            )) {
+                return response()->json(['message' => 'Category already exists.'], 400);
+            }elseif ($request->input('status_category') == 'Pending' && (
+                $step->category_2 == '1'
+            )) {
+                return response()->json(['message' => 'Category already exists.'], 400);
+            }elseif ($request->input('status_category') == 'Pending' && (
+                $step->category_3 == '1'
+            )) {
+                return response()->json(['message' => 'Category already exists.'], 400);
+            }  
+            elseif ($request->input('status_category') == 'Complete' && (
+                $step->category_2 == '1'
+            )) {
+                return response()->json(['message' => 'Category already exists.'], 400);
+            }elseif ($request->input('status_category') == 'Complete' && (
+                $step->category_2 == '2'
+            )) {
+                return response()->json(['message' => 'Category already exists.'], 400);
+            }elseif ($request->input('status_category') == 'Complete' && (
+                $step->category_2 == '3'
+            )) {
+                return response()->json(['message' => 'Category already exists.'], 400);
+            }
+             elseif ($request->input('status_category') == 'Reject' && (
+                $step->category_3 == '1'
+            )) {
+                return response()->json(['message' => 'Category already exists.'], 400);
+            }elseif ($request->input('status_category') == 'Reject' && (
+                $step->category_3 == '2'
+            )) {
+                return response()->json(['message' => 'Category already exists.'], 400);
+            }elseif ($request->input('status_category') == 'Reject' && (
+                $step->category_3 == '3'
+            )) {
+                return response()->json(['message' => 'Category already exists.'], 400);
+            }
+
+              
             // Ενημέρωση των πεδίων
-            $step->id = $step->id;
             $step->category = $request->input('category');
             $step->status_category = $request->input('status_category');
             $step->save();
-
+        
             return view('welcome');
         }
 

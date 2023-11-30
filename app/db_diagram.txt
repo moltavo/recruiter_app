@@ -13,6 +13,12 @@ erDiagram
     status_category VARCHAR(255)
     status_history JSONB
     timeline_id INT FK
+    category_1 INT FK
+    category_2 INT FK
+    category_3 INT FK
+    status_category_1 INT FK
+    status_category_2 INT FK
+    status_category_3 INT FK
   }
 
   Timeline 1..n *-- 0..n Step

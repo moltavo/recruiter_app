@@ -18,6 +18,12 @@ return new class extends Migration
             $table->unsignedBigInteger('timeline_id');
             $table->string('category');
             $table->string('status_category');
+            $table->unsignedBigInteger('category_1');
+            $table->unsignedBigInteger('category_2');
+            $table->unsignedBigInteger('category_3');
+            $table->unsignedBigInteger('status_category_1');
+            $table->unsignedBigInteger('status_category_2');
+            $table->unsignedBigInteger('status_category_3');
             $table->timestamps();
             
             // Add foreign key constraints if needed
