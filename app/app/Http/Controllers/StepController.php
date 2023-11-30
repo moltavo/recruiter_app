@@ -79,45 +79,45 @@ class StepController extends Controller
                 $step->status_category_3 = 1;
             }
 
-            if ($request->input('status_category') == 'Pending' && (
-                $step->category_1 == '1'
-            )) {
-                return response()->json(['message' => 'Category already exists.'], 400);
-            }elseif ($request->input('status_category') == 'Pending' && (
-                $step->category_2 == '1'
-            )) {
-                return response()->json(['message' => 'Category already exists.'], 400);
-            }elseif ($request->input('status_category') == 'Pending' && (
-                $step->category_3 == '1'
-            )) {
-                return response()->json(['message' => 'Category already exists.'], 400);
-            }  
-            elseif ($request->input('status_category') == 'Complete' && (
-                $step->category_2 == '1'
-            )) {
-                return response()->json(['message' => 'Category already exists.'], 400);
-            }elseif ($request->input('status_category') == 'Complete' && (
-                $step->category_2 == '2'
-            )) {
-                return response()->json(['message' => 'Category already exists.'], 400);
-            }elseif ($request->input('status_category') == 'Complete' && (
-                $step->category_2 == '3'
-            )) {
-                return response()->json(['message' => 'Category already exists.'], 400);
-            }
-             elseif ($request->input('status_category') == 'Reject' && (
-                $step->category_3 == '1'
-            )) {
-                return response()->json(['message' => 'Category already exists.'], 400);
-            }elseif ($request->input('status_category') == 'Reject' && (
-                $step->category_3 == '2'
-            )) {
-                return response()->json(['message' => 'Category already exists.'], 400);
-            }elseif ($request->input('status_category') == 'Reject' && (
-                $step->category_3 == '3'
-            )) {
-                return response()->json(['message' => 'Category already exists.'], 400);
-            }
+            // if ($request->input('status_category') == 'Pending' && (
+            //     $step->category_1 == '1'
+            // )) {
+            //     return response()->json(['message' => 'Category already exists.'], 400);
+            // }elseif ($request->input('status_category') == 'Pending' && (
+            //     $step->category_2 == '1'
+            // )) {
+            //     return response()->json(['message' => 'Category already exists.'], 400);
+            // }elseif ($request->input('status_category') == 'Pending' && (
+            //     $step->category_3 == '1'
+            // )) {
+            //     return response()->json(['message' => 'Category already exists.'], 400);
+            // }  
+            // elseif ($request->input('status_category') == 'Complete' && (
+            //     $step->category_2 == '1'
+            // )) {
+            //     return response()->json(['message' => 'Category already exists.'], 400);
+            // }elseif ($request->input('status_category') == 'Complete' && (
+            //     $step->category_2 == '1'
+            // )) {
+            //     return response()->json(['message' => 'Category already exists.'], 400);
+            // }elseif ($request->input('status_category') == 'Complete' && (
+            //     $step->category_2 == '1'
+            // )) {
+            //     return response()->json(['message' => 'Category already exists.'], 400);
+            // }
+            //  elseif ($request->input('status_category') == 'Reject' && (
+            //     $step->category_3 == '1'
+            // )) {
+            //     return response()->json(['message' => 'Category already exists.'], 400);
+            // }elseif ($request->input('status_category') == 'Reject' && (
+            //     $step->category_3 == '1'
+            // )) {
+            //     return response()->json(['message' => 'Category already exists.'], 400);
+            // }elseif ($request->input('status_category') == 'Reject' && (
+            //     $step->category_3 == '1'
+            // )) {
+            //     return response()->json(['message' => 'Category already exists.'], 400);
+            // }
 
               
             // Ενημέρωση των πεδίων
