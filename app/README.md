@@ -5,7 +5,7 @@
 1. Κλωνοποιήστε το αποθετήριο:
 
     ```bash
-    git clone https://github.com/fotelefth/recruiter_app.git
+    git clone https://github.com/moltavo/recruiter_app.git
     ```
 
 2. Αντέγραψε το αρχείο `.env.example` σε ένα νέο αρχείο με το όνομα `.env`.
